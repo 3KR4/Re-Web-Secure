@@ -1,13 +1,17 @@
 import IconHolder from '../header/iconHolder';
 import { NavLink } from 'react-router-dom';
-export default function Header2 () {
+import { useParams } from 'react-router-dom'
 
+export default function Header2 () {
+  const { type } = useParams();
+
+  console.log(type);
 
   return(
     <div className='header2'>
       <ul className="nav">
 
-      <NavLink to="/home/front" className='headr2Li'>
+      <NavLink to="/home/front" className={type == undefined ? 'headr2Li active' : 'headr2Li'}>
         Front End 
       </NavLink>
 

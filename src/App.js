@@ -39,8 +39,7 @@ const [bodyColor , setBodyColor] = useState("")
 
   return (
     <div className={`App body ${bodyColor == "dark" ? "dark" : "light"}`}>
-
-
+      <Header bodyColor={bodyColor} clickColorTheme={clickColorTheme}/>
 
       <Routes>
         <Route index element={<HomePage/>}/>

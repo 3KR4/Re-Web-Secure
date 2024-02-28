@@ -327,14 +327,30 @@ input:focus {
 }
 .projectsHolder .box img {
   object-fit: cover;
-  width: 340px;
-  height: 200px;
+  width: 380px;
+  height: 224px;
 }
 .projectsHolder .box h4 {
   position: absolute;
   bottom: 20px;
   left: 20px;
   z-index: 3;
+}
+.projectsHolder .box p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 3;
+  background: var(--main-color);
+  padding: 4px 10px;
+  border-radius: 8px;
+  visibility: hidden;
+  transform: 0.3s;
+}
+.projectsHolder .box.active p {
+  visibility: visible;
 }
 
 .textHolder .imgHolder {

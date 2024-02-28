@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-
-
-
 
 // ICONS
 import Facebock from '../../img/facebock.jpg';
@@ -45,6 +42,7 @@ const homeInfo = [
         img: Facebock,
         name: "facebock",
         link: "",
+        title: "Sosial Media",
         active: true,
       },
       {
@@ -52,24 +50,21 @@ const homeInfo = [
         img: Sigma,
         name: "sigma",
         link: "",
+        title: "hardware shop",
       },
       {
         id: uuid(),
         img: Blink,
         name: "blink",
         link: "",
+        title: "company",
       },
       {
         id: uuid(),
         img: Base,
         name: "base",
         link: "",
-      },
-      {
-        id: uuid(),
-        img: Spark,
-        name: "spark",
-        link: "",
+        title: "portfolyo",
       },
     ]
   },
@@ -86,6 +81,7 @@ const homeInfo = [
         img: Facebock,
         name: "facebock",
         link: "",
+        title: "Sosial Media",
         active: true,
       },
       {
@@ -93,24 +89,21 @@ const homeInfo = [
         img: Sigma,
         name: "sigma",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Blink,
         name: "blink",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Base,
         name: "base",
         link: "",
-      },
-      {
-        id: uuid(),
-        img: Spark,
-        name: "spark",
-        link: "",
+        title: "Sosial Media",
       },
     ]
   },
@@ -127,6 +120,7 @@ const homeInfo = [
         img: Facebock,
         name: "facebock",
         link: "",
+        title: "Sosial Media",
         active: true,
       },
       {
@@ -134,24 +128,21 @@ const homeInfo = [
         img: Sigma,
         name: "sigma",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Blink,
         name: "blink",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Base,
         name: "base",
         link: "",
-      },
-      {
-        id: uuid(),
-        img: Spark,
-        name: "spark",
-        link: "",
+        title: "Sosial Media",
       },
     ]
   },
@@ -168,6 +159,7 @@ const homeInfo = [
         img: Facebock,
         name: "facebock",
         link: "",
+        title: "Sosial Media",
         active: true,
       },
       {
@@ -175,24 +167,21 @@ const homeInfo = [
         img: Sigma,
         name: "sigma",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Blink,
         name: "blink",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Base,
         name: "base",
         link: "",
-      },
-      {
-        id: uuid(),
-        img: Spark,
-        name: "spark",
-        link: "",
+        title: "Sosial Media",
       },
     ]
   },
@@ -209,6 +198,7 @@ const homeInfo = [
         img: Facebock,
         name: "facebock",
         link: "",
+        title: "Sosial Media",
         active: true,
       },
       {
@@ -216,41 +206,33 @@ const homeInfo = [
         img: Sigma,
         name: "sigma",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Blink,
         name: "blink",
         link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
         img: Base,
         name: "base",
         link: "",
-      },
-      {
-        id: uuid(),
-        img: Spark,
-        name: "spark",
-        link: "",
+        title: "Sosial Media",
       },
     ]
   },
 ]
 
 
-
-
-
-
 export default function HomePage () {
-  
+
   const { type } = useParams();
   const nowPage = homeInfo.find((page) => page.id === type) || homeInfo[0];
 
   document.documentElement.style.setProperty('--main-color', nowPage.color);
-
 
   return (
     <>
