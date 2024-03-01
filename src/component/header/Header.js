@@ -18,7 +18,7 @@ return(
   <div className="header">
     <div className='logo'>
       <img src={logo}  alt="logo" />
-      <h1>Re-Web-Secure</h1>
+      <h1>Web Secure</h1>
     </div>
 
       <ul className="nav">
