@@ -1,11 +1,9 @@
-import IconHolder from '../header/iconHolder';
+import IconHolder from '../elements/iconHolder';
 import { NavLink } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 
 export default function Header2 () {
   const { type } = useParams();
-
-  console.log(type);
 
   return(
     <div className='header2'>

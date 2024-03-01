@@ -11,8 +11,8 @@ export default function HomeText (props) {
         strings={[
           page.title,
         ]}
-        typeSpeed={70}
-        backSpeed={50}
+        typeSpeed={80}
+        backSpeed={80}
         loop 
         className='mainTitle'
       />
@@ -21,7 +21,7 @@ export default function HomeText (props) {
         <p>{page.detailes}</p>
       </div>
       <div className='imgHolder'>
-        <img src={localStorage.getItem("theme") == "dark-mode" ? page.img1 : page.img2} className='mainImg'/>
+        <img src={page.img} className='mainImg'/>
       </div>
     </div>
   )

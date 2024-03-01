@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import IconHolder from './iconHolder';
+import IconHolder from '../elements/iconHolder';
 
 
 export default function Header3() {
@@ -17,7 +17,7 @@ export default function Header3() {
   }, [activeIndex])
 
   function clickScrollDown() {
-    setActiveIndex((prevIndex) => (prevIndex - 1 + allProjects.length) % allProjects.length);
+    setActiveIndex((prevIndex) =>  (prevIndex - 1 + allProjects.length) % allProjects.length);
   }
 
   function clickScrollUp() {

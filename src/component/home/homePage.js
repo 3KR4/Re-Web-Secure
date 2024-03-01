@@ -1,24 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { MySwiper } from './projectsSwiper'
 
 // ICONS
 import Facebock from '../../img/facebock.jpg';
 import Sigma from '../../img/sigma.jpg';
 import Blink from '../../img/blink.png';
 import Base from '../../img/base.png';
-import Spark from '../../img/spark.png';
 
 // IMGS
-import frontImgDark from '../../img/frontend dark.gif';
-import frontImgLight from '../../img/frontend light.gif';
-import uiuxDark from '../../img/uiandux dark.gif';
-import uiuxLight from '../../img/uiandux light.gif';
-import backendDark from '../../img/back end darck.gif';
-import backendLight from '../../img/back end light.gif';
-import designerDark from '../../img/graphic designer dark.gif';
-import designerLight from '../../img/graphic designer light.gif';
-import cyberSecurityDark from '../../img/cyperSecrity dark.gif';
-import cyberSecurityLight from '../../img/cyperSecrity light.gif';
+
+import frontImg from '../../img/Programming-amico.png';
+import uiux from '../../img/uiandux.png';
+import backend from '../../img/back end.png';
+import designer from '../../img/graphic designer.png';
+import cyberSecurity from '../../img/cyperSecrity.png';
 
 import {v4 as uuid} from 'uuid'
 
@@ -31,10 +27,9 @@ import HomeText from '../home/homeText'
 const homeInfo = [
   {
     id: "front",
-    title:"Front End Devolober",
+    title:"Front End Developing",
     detailes:"Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna. Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.",
-    img1:frontImgDark,
-    img2: frontImgLight,
+    img:frontImg,
     color: "#2a84ff",
     projects:[
       {
@@ -70,10 +65,9 @@ const homeInfo = [
   },
   {
     id:"uiux",
-    title:"UI and UX Devolober",
+    title:"UI and UX Developing",
     detailes:"asKldhA SKJdhAS JKdhASKJ: dhASJK dhASKJHasdajsk fWJKHFgSADHJ FvSDHJKfgAS HFgALJHYGfVASB FshjsDVDfhjkSADGGVGf ASDasKLD hjASKD hASJKL D             aJKSDhASJKDgAS KJdSAJK dhsa djksAHdj          aJSKDhAS JkdsaH dkjsAH DaJSKDHJGK fvbSADHJf gvSADJKHF gSDHJKF gs fgAJKHFAHJf gAHJKLf gAFj; hAFGkjlhSDGfhkhjLASDGF AJLH FgALJHSF gaLorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod  Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna. Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.",
-    img1:uiuxDark,
-    img2: uiuxLight,
+    img:uiux,
     color: "#27ae60",
     projects:[
       {
@@ -109,10 +103,9 @@ const homeInfo = [
   },
   {
     id:"backend",
-    title:"Back End Devolober",
+    title:"Back End Developing",
     detailes:"Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna. Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.",
-    img1:backendDark,
-    img2: backendLight,
+    img:backend,
     color: "#fe5b3d",
     projects:[
       {
@@ -148,10 +141,9 @@ const homeInfo = [
   },
   {
     id:"graphic",
-    title:"Graphic Designer",
+    title:"Graphic Design",
     detailes:"Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna. Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.",
-    img1:designerDark,
-    img2: designerLight,
+    img:designer,
     color: "#e84393",
     projects:[
       {
@@ -189,8 +181,7 @@ const homeInfo = [
     id:"cyberSecurity",
     title:"Cyber Security",
     detailes:"Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna. Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.Lorem ipsum dolor sit amet, adipscing elitr, sed diam nonumy eirmod tempor ividunt dolore magna.",
-    img1:cyberSecurityDark,
-    img2: cyberSecurityLight,
+    img:cyberSecurity,
     color: "#f39c12",
     projects:[
       {
@@ -229,19 +220,41 @@ const homeInfo = [
 
 export default function HomePage () {
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 995px)');
+    const handleMediaQueryChange = (mediaQueryList) => {
+      setIsSmallScreen(mediaQueryList.matches);
+    };
+    handleMediaQueryChange(mediaQuery);
+    mediaQuery.addListener(handleMediaQueryChange);
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, [])
+
+
+
   const { type } = useParams();
   const nowPage = homeInfo.find((page) => page.id === type) || homeInfo[0];
-
+  console.log(type);
   document.documentElement.style.setProperty('--main-color', nowPage.color);
 
   return (
-    <>
-      <Header2/>
-      <Header3/>
       <div className='landing'>
-        <FrontProject nowPage={nowPage}/>
-        <HomeText nowPage={nowPage}/>
+        <Header3/>
+          <div className='content container'>
+          {isSmallScreen ? (
+            <MySwiper nowPage={nowPage}/>
+          ) : (
+            <FrontProject nowPage={nowPage}/>
+          )}
+            <HomeText nowPage={nowPage}/>
+          </div>
+        <Header2/>
       </div>
-    </>
   )
 }
+
+
+
