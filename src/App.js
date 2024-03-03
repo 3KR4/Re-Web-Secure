@@ -16,33 +16,9 @@ import ServicesPage from './component/pages/services'
 
 function App() {
 
-const [bodyColor , setBodyColor] = useState("")
-
-  useEffect(() => {
-    let getTheme = localStorage.getItem("theme");
-    if (getTheme == "light-mode") {
-      setBodyColor("light")
-      localStorage.setItem("theme", "light-mode");
-    } else {
-      setBodyColor("dark")
-      localStorage.setItem("theme", "dark-mode");
-    }
-  }, {})
-
-  function clickColorTheme () {
-    if (bodyColor == "dark") {
-      localStorage.setItem("theme", "light-mode");
-      setBodyColor("light")
-    } else {
-      localStorage.setItem("theme", "dark-mode");
-      setBodyColor("dark")
-    }
-  };
-
   return (
-    <div className={`App body ${bodyColor == "dark" ? "dark" : "light"}`}>
-        <Header bodyColor={bodyColor} clickColorTheme={clickColorTheme}/>
-
+    <div className={`App`}>
+        <Header/>
       <Routes>
         <Route index element={<HomePage/>}/>
         <Route path='/home/:type' element={<HomePage/>}/>

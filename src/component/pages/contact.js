@@ -5,6 +5,7 @@ import IconHolder from "../elements/iconHolder"
 import RoomIcon from '@mui/icons-material/Room';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
+import MainFooter from "../header/footer";
 
 export default function ContactPage () {
 
@@ -62,7 +63,9 @@ return(
           <a class="main-btn" href="">Submit Ticket</a>
       </div>
     </div>
+    <MainFooter/>
   </div>
+
   </>
   )
 }

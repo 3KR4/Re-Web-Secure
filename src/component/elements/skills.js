@@ -41,7 +41,7 @@ export default function OurSkills() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 700) {
+      if (window.scrollY > document.querySelector(".about .counter").offsetTop - 900) {
         const percentageIncreasePerInterval = 1; // Adjust as needed
 
         progress = setInterval(() => {
@@ -60,7 +60,7 @@ export default function OurSkills() {
 
             return updatedSkills;
           });
-        }, 100);
+        }, 150);
 
         return () => clearInterval(progress);
       }
