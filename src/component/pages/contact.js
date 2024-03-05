@@ -21,49 +21,58 @@ export default function ContactPage () {
 
   const checkName = () => {
     if (form.name.length < 4) {
-      setInvalidInputs([...invalidInputs, 'name']);
+      setInvalidInputs((prevInvalidInputs) => [...prevInvalidInputs, 'name']);
     } else {
-      setInvalidInputs(invalidInputs.filter(input => input !== 'name'));
+      setInvalidInputs((prevInvalidInputs) =>
+        prevInvalidInputs.filter(input => input !== 'name')
+      );
     }
   };
-
+  
   const checkPhone = () => {
-    if (form.phone.length < 10 || form.phone.length > 12*9) {
-      setInvalidInputs([...invalidInputs, 'phone']);
+    if (form.phone.length < 10 || form.phone.length > 12) {
+      setInvalidInputs((prevInvalidInputs) => [...prevInvalidInputs, 'phone']);
     } else {
-      setInvalidInputs(invalidInputs.filter(input => input !== 'phone'));
+      setInvalidInputs((prevInvalidInputs) =>
+        prevInvalidInputs.filter(input => input !== 'phone')
+      );
     }
   };
-
+  
   const checkEmail = () => {
     const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (!form.email.match(emailPattern)) {
-      setInvalidInputs([...invalidInputs, 'email']);
+      setInvalidInputs((prevInvalidInputs) => [...prevInvalidInputs, 'email']);
     } else {
-      setInvalidInputs(invalidInputs.filter(input => input !== 'email'));
+      setInvalidInputs((prevInvalidInputs) =>
+        prevInvalidInputs.filter(input => input !== 'email')
+      );
     }
   };
-
+  
   const checkSubject = () => {
     if (form.subject.length < 4) {
-      setInvalidInputs([...invalidInputs, 'subject']);
+      setInvalidInputs((prevInvalidInputs) => [...prevInvalidInputs, 'subject']);
     } else {
-      setInvalidInputs(invalidInputs.filter(input => input !== 'subject'));
+      setInvalidInputs((prevInvalidInputs) =>
+        prevInvalidInputs.filter(input => input !== 'subject')
+      );
     }
   };
+  
+  const nagi = () => {
+    checkName()
+    checkPhone()
+    checkEmail()
+    checkSubject()
+  }
 
 const handleSubmit = (event) => {
   event.preventDefault();
-  // if (!form.name || !form.phone || !form.email || !form.subject) {
-  //   alert("Please fill in all fields");
-  //   return;
-  // }
-  checkName();
-  checkPhone();
-  checkEmail();
-  checkSubject();
-
-  console.log(invalidInputs);
+  if (!form.name || !form.phone || !form.email || !form.subject) {
+    alert("Please fill in all fields");
+    return;
+  }
 
   if (invalidInputs.length == 0) {
     const servicId = 'service_hbui60s'
@@ -90,9 +99,6 @@ const handleSubmit = (event) => {
     })
   }
 };
-
-
-
 
 return(
   <>
@@ -168,7 +174,7 @@ return(
             </textarea>
             <span className={invalidInputs.includes('subject')  ? "error invaled" : "error"}>How can we help  you in executing your project?</span>
           </div>
-          <button type="submit" class="main-btn">Submit Ticket</button>
+          <button onClick={nagi} type="submit" class="main-btn">Submit Ticket</button>
       </form>
     </div>
     <MainFooter/>
