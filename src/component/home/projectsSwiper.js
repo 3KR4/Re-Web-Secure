@@ -1,29 +1,20 @@
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 
-import { Navigation } from 'swiper/react'; // Import Navigation directly from swiper/react
-import { useRef } from 'react'; // Import useRef hook
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 
 export function MySwiper(props) {
-  const swiperRef = useRef(null); // Create a ref for the Swiper instance
-
-  const goToPrevSlide = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slidePrev(); // Navigate to the previous slide
-    }
-  };
-  
-
-  const goToNextSlide = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideNext(); // Navigate to the next slide
-    }
-  };
-
   const page = props.nowPage.projects;
 
   const projectsRendering = page.map((x) => (
-    <SwiperSlide key={x.id} className={x.active === true ? "box active" : "box"}>
+    <SwiperSlide key={x.id} className='box'>
       <img src={x.img} alt={x.name} />
       <h4>{x.name}</h4>
       <p>{x.title}</p>
@@ -32,18 +23,38 @@ export function MySwiper(props) {
 
   return (
     <Swiper
-      className="projectsHolder"
-      slidesPerView={4}
-      spaceBetween={10}
-      slidesPerGroup={5}
+      effect={'coverflow'}
+      grabCursor={true}
+      centeredSlides={true}
       loop={true}
-      loopFillGroupWithBlank={true}
-      navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }} // Navigation configuration
-      ref={swiperRef} // Assign the ref to the Swiper instance
+      slidesPerView={'auto'}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.5,
+      }}
+      pagination={{ el: '.swiper-pagination', clickable: true }}
+      navigation={{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        clickable: true,
+      }}
+      modules={[EffectCoverflow, Pagination, Navigation]}
+      className="swiper_container projectsHolder"
     >
       {projectsRendering}
-      <div className="swiper-button-prev swiperBtn" onClick={goToPrevSlide}></div> {/* Previous button */}
-      <div className="swiper-button-next swiperBtn" onClick={goToNextSlide}></div> {/* Next button */}
+
+      <div className="slider-controler">
+          <div className="swiper-button-prev slider-arrow">
+          <KeyboardArrowLeftIcon className='icon'/>
+          </div>
+          <div className="swiper-button-next slider-arrow">
+            <KeyboardArrowRightIcon className='icon'/>
+          </div>
+
+          <div className="swiper-pagination"></div>
+        </div>
     </Swiper>
   );
 }

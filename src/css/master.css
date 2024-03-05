@@ -49,14 +49,14 @@ body {
   --main-color:   #2a84ff;
   --main-color2:  #fd723b;
   --text-color:   #2f2f2f;
-  --paragraph :   #8b8b8b;
+  --paragraph :   #6b6b6b;
   --input-color:  #ececec;
   --border-color: #d2d2d2;
 }
 body.dark {
   --body-color:   #171918;
   --text-color:   #fff;
-  --paragraph :   #8b8b8b;
+  --paragraph :   #6b6b6b;
   --input-color:  #232625;
   --border-color: #2f2f2f;
 }
@@ -439,10 +439,11 @@ button {
 
 }
 .header2 .nav .headr2Li {
+  font-size: 16px;
+  letter-spacing: 0.5px;
   writing-mode: vertical-rl;
-  padding: 41px 30px;
+  padding: 23px 30px;
   text-transform: uppercase;
-  font-weight: 400;
   border-bottom: 2px solid var(--border-color);
   transition: 0.3s;
   color: var(--text-color);
@@ -676,6 +677,9 @@ button {
 .textHolder .text {
   transform: translateY(-50px);
 }
+.landing {
+  gap: 0px;
+}
 .landing .mainTitle {
   font-size: 40px;
   font-weight: 700;
@@ -721,31 +725,40 @@ button {
   width: 86% !important;
   transform: translateX(12px) !important;
 }
-.swiper-slide {
-  width: 100% !important;
+.swiper-3d {
+  height: 366px !important;
 }
-.swiperBtn {
-  background: var(--main-color);
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  border-radius: 50px;
-  bottom: -55px;
-  z-index: 100;
-  cursor: pointer;
-  transition: 0.3s;
+.slider-arrow::after {
+  display: none;
 }
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  background: var(--main-color2);
-}
-.swiper-button-prev.swiperBtn {
-  left: 45%;
-}
-.swiper-button-next.swiperBtn {
-  left: 55%;
+.swiper .icon {
+  width: 80px;
+  height: 80px;
+  color: white;
 }
 
+.swiper-button-next, .swiper-button-prev {
+  background: var(--main-color);
+  padding: 27px 19px;
+  border-radius: 5px;
+  transform: translateY(-25px);
+}
+
+.swiper-pagination-bullet {
+  opacity: 1 !important;
+  background: #d0cccc !important;
+}
+body.dark .swiper-pagination-bullet {
+  opacity: 1 !important;
+  transition: 0.5s;
+  background: #484848 !important;
+}
+.swiper-pagination-bullet-active,
+body.dark .swiper-pagination-bullet-active {
+  background: var(--main-color) !important;
+  width: 20px !important;
+  border-radius: 6px !important; 
+}
 /*!XXXXXXXXXXXXXXXXXXX ABOUT XXXXXXXXXXXXXXXXXXXXX*/
 
 .section .container {
@@ -1149,6 +1162,172 @@ body.dark .about .button button {
   font-weight: 600;
 }
 
+/*!XXXXXXXXXXXXXXXXXXX Projects XXXXXXXXXXXXXXXXXXXXX*/
+
+.Projects-page .projects {
+  margin-top: 65px;
+}
+.Projects-page .mainTitle {
+  margin-bottom: 50px;
+}
+.Projects-page .mainTitle p {
+  font-size: 21px;
+  color: #454545;
+}
+body.dark .Projects-page .mainTitle p {
+  color: var(--paragraph);
+}
+.Projects-page .sectionFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 70px;
+}
+.Projects-page .sectionFilter li {
+  background: var(--input-color);
+  padding: 12px 22px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.Projects-page .sectionFilter li:hover,
+.Projects-page .sectionFilter li.active { 
+  color: white;
+  background: var(--main-color);
+}
+.Projects-page .sectionFilter li:first-child {
+  border-top-left-radius: 15px;
+}
+.Projects-page .sectionFilter li:last-child {
+  border-top-right-radius: 15px;
+}
+.Projects-page .allprojects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(308px, 1fr));
+  gap: 25px;
+}
+.Projects-page .allprojects .box {
+  background: var(--input-color);
+  border-radius: 8px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  border: 2px solid var(--input-color);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+  position: relative;
+}
+.Projects-page .allprojects .box:hover {
+  scale: 1.05;
+}
+.Projects-page .allprojects .box::before {
+  content: "";
+  left: 50%;
+  bottom: 0;
+  height: 5px;
+  width: 0%;
+  transform: translateX(-50%);
+  background-color: var(--main-color);
+  position: absolute;
+  transition: 0.3s;
+  z-index: 100;
+}
+.Projects-page .allprojects .box:hover {
+  transform: translateY(-10px);
+}
+.Projects-page .allprojects .box:hover::before {
+  width: 100%;
+}
+.Projects-page .allprojects .box .image {
+  position: relative;
+}
+.Projects-page .allprojects .box .image span {
+  position: absolute;
+  background: var(--main-color);
+  color: white;
+  padding: 4px 14px;
+  font-size: 12px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  right: 20px;
+  bottom: 20px;
+}
+.Projects-page .allprojects .box .image img {
+  width: 100%;
+  height: 225px;
+}
+.Projects-page .allprojects .box .text {
+  padding: 10px 25px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: auto;
+}
+.Projects-page .allprojects .box  h3 {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.Projects-page .allprojects .box p {
+  font-size: 15px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+.Projects-page .allprojects .box .holder{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.Projects-page .allprojects .box .holder a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--main-color);
+  padding: 9px 20px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.Projects-page .allprojects .box .holder a:hover {
+  background: var(--main-color2);
+}
+.Projects-page .allprojects .box .holder a .icon{
+  font-size: 20px;
+}
+.Projects-page .allprojects .box .holder .images {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.Projects-page .allprojects .box .holder .images img {
+  width: 30px;
+}
+
+.Projects-page .pagination {
+  color: var(--text-color);
+}
+.Projects-page .pagination {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 45px;
+}
+.Projects-page .pagination li {
+  border-radius: 4px;
+  padding: 8px 18px;
+  transition: 0.3s;
+  background: var(--input-color);
+  border: 1px solid var(--searchBord-3);
+}
+.Projects-page .pagination li:hover,
+.Projects-page .pagination li.active {
+  color: white;
+  background-color: var(--main-color);
+}
+
 /*!XXXXXXXXXXXXXXXXXXX SERVICES XXXXXXXXXXXXXXXXXXXXX*/
 
 .services-page .services {
@@ -1243,6 +1422,127 @@ body.dark .about .button button {
   background-color: #c2c2c2;
 }
 
+.services-page .pricing {
+  padding-top: 90px;
+  padding-bottom: 127px;
+  position: relative;
+  background-color: var(--section-background);
+}
+.services-page .pricing .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+.services-page .pricing .box {
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  margin-top: 18px;
+  background-color: var(--input-color);
+  transition: 0.6s;
+}
+.services-page .pricing .box .icon {
+  font-size: 70px;
+  color: white;
+  margin-bottom: 0;
+}
+.services-page .pricing.title i {
+  font-size: 20px;
+}
+.services-page .pricing .box::before,
+.services-page .pricing .box::after {
+  content:"";
+  position: absolute;
+  width: 0;
+  height: 50%;
+  z-index: -1;
+  background-color: #e0e0e0;
+  transition: 0.5s;
+}
+body.dark .services-page .pricing .box::before,
+body.dark .services-page .pricing .box::after {
+  background-color: #282929;
+}
+.services-page .pricing .box::before {
+  left: 0;
+  top: 98px;
+}
+.services-page .pricing .box::after {
+  bottom: 0;
+  right: 0;
+  height: 38%;
+}
+.services-page .pricing .box:hover::before,
+.services-page .pricing .box:hover::after {
+  width: 100%;
+}
+@media (min-width:1200px) {
+.services-page .pricing .box.popular {
+  top: -25px;
+  }
+}
+.services-page .pricing .box .title {
+  padding: 15px 0;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+  text-transform: capitalize;
+  gap: 10px;
+  background: #22c55e;
+  border: 3px solid white;
+  outline: 5px solid #22c55e;
+  margin: 5px;
+}
+.services-page .pricing .box:nth-child(2) .title {
+  background: var(--main-color);
+  outline: 5px solid var(--main-color);
+}
+.services-page .pricing .box:nth-child(3) .title {
+  background: #fe5b3d;
+  outline: 5px solid #fe5b3d;
+}
+.services-page .pricing .box img {
+  width: 80px;
+  margin-bottom: 30px;
+}
+.services-page .pricing .box .price {
+  color: var(--text-color);
+}
+.services-page .pricing .box .amount {
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+}
+.services-page .pricing .box ul {
+  margin-top: 15px;
+}
+.services-page .pricing .box ul li {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.services-page .pricing .box a {
+  display: block;
+  width: fit-content;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  margin: 8px auto 40px;
+  padding: 13px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.services-page .pricing .box a:hover {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+  color: white;
+}
+
 /*!XXXXXXXXXXXXXXXXXXX CONTACT XXXXXXXXXXXXXXXXXXXXX*/
 
 .contact-page {
@@ -1292,6 +1592,13 @@ body.dark .about .button button {
 .contact-page .contact > div input:focus,
 .contact-page .contact > div textarea:focus { 
   outline: 2px solid var(--main-color);
+}
+.contact-page .error {
+  color: #ef2c20;
+  display: none;
+}
+.contact-page .error.invaled {
+  display: flex;
 }
 .contact-page .contact .main-btn {
   width: 100%;
@@ -1383,7 +1690,7 @@ body.dark .about .button button {
 }
 .started img {
   position: absolute;
-  bottom: 0;
+  bottom: -19px;
   right: 0;
   z-index: 1;
 }
@@ -1429,7 +1736,7 @@ body.dark .about .button button {
   align-items: center;
 }
 .footer .box h3 {
-  color: white;
+  color: var(--text-color);
   font-size: 38px;
   margin: 0 0 12px;
   display: flex;
@@ -1446,7 +1753,7 @@ body.dark .about .button button {
 }
 .footer .box .text {
   line-height: 2;
-  color: #b9b9b9;
+  color: var(--paragraph);
   text-align: center;
 }
 .footer .link-box {
@@ -1478,7 +1785,7 @@ body.dark .about .button button {
   color: white;
 }
 .footer .link-box .links a {
-  color: #b9b9b9;
+  color: var(--paragraph);
   transition: 0.3s;
 }
 .footer .box .line {
@@ -1495,6 +1802,7 @@ body.dark .about .button button {
 .footer .box .line .info {
   line-height: 1.7;
   flex: 1;
+  color: var(--paragraph);
 }
 .footer .box .line .info span {
   display: block;
@@ -1543,6 +1851,7 @@ body.dark .about .button button {
     height: 93%;
     justify-content: space-between;
     z-index: 98;
+    background: var(--body-color);
   }
   .header2 .iconHolder {
     margin-bottom: 6px;
@@ -1570,6 +1879,14 @@ body.dark .about .button button {
       display: flex;
       justify-content: center;
   }
+  .textHolder {
+    margin-top: 110px;
+  }
+  .landing .textHolder .whyUs {
+    max-height: 326px;
+    overflow: auto;
+    padding-right: 15px;
+  }
   .projectsHolder {
     margin-left: 0;
     display: flex;
@@ -1585,9 +1902,10 @@ body.dark .about .button button {
   }
   .projectsHolder .box {
     overflow: visible;
+    height: fit-content;
   }
   .header2 .nav .headr2Li {
-    padding: 33px 30px;
+    padding: 17px 30px;
   }
   .landing .content {
     height: fit-content;
@@ -1596,6 +1914,9 @@ body.dark .about .button button {
   }
   .textHolder .text {
     text-align: center;
+  }
+  .landing .content {
+    gap: 0;
   }
   .projectsHolder .box.active {
     border-left: none;
@@ -1608,6 +1929,14 @@ body.dark .about .button button {
   .about .section {
     flex-direction: column;
   }   
+  .about .work .container {
+    flex-direction: column;
+    gap: 80px;
+    margin-bottom: 90px;
+  }
+  .section .container {
+    flex-direction: column;
+  }
   .about .section img {
     width: 55%;
   }
@@ -1626,8 +1955,8 @@ body.dark .about .button button {
     width: 85%;
   }
   .about .section {
-    margin-bottom: 150px;
-  }
+    margin-bottom: 110px;
+}
   .about p {
     text-align: center;
   }
@@ -1676,8 +2005,21 @@ body.dark .about .button button {
   .about .work-steps .text {
     align-items: center;
   }
-  .footer {
-    margin-top: -50px;
+  .Projects-page .allprojects .box h3 {
+    font-size: 22px;
+    margin-bottom: 5px; 
+  }
+  .Projects-page .allprojects .box .holder .images img {
+    width: 21px;
+  }
+  .Projects-page .allprojects .box .image img {
+    height: 200px;
+  }
+  .about .team .box .imgHolder {
+    width: 110px;
+    height: 110px;
+    top: -43px;
+    left: 74%;
   }
 }
 
@@ -1799,4 +2141,54 @@ body.dark .about .button button {
   .footer .box .social {
     justify-content: center;
   }
+  .Projects-page .sectionFilter li:nth-child(3) {
+    border-top-right-radius: 15px;
+  }
+  .Projects-page .sectionFilter li:nth-child(4) {
+    border-top-left-radius: 15px;
+  }
+  .Projects-page .sectionFilter {
+    flex-wrap: wrap;
+  }
+  .about .counter .container {
+    grid-template-columns: repeat(auto-fill, minmax(182px, 1fr));
+  } 
+  .started .container {
+    flex-direction: column;
+    padding: 0;
+    text-align: center;
+  }
+  .started h1 {
+    font-size: 21px;
+    margin-bottom: 16px; 
+  }
+  .started {
+    margin: 0 20px;
+  }
+  .started img {
+    width: 103%; 
+  }
+  .Projects-page .sectionFilter li {
+    padding: 12px 30px
+  }
+}
+
+
+.asdas{
+  border-bottom: 3px solid #2f7fe2;
+  padding-bottom: 6px;
+}
+.asda{
+  padding: 12px;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+  background: #2f7fe2;
+  border-right: 4px solid #2f7fe2;
+  width: 500px;
+  border-radius: 6px;
+  border-left: 4px solid #2f7fe2;
+  font-style: italic;
+}
+.asd{
+  color: #005acb;
 }

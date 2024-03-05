@@ -12,7 +12,6 @@ export default function HomeText (props) {
   return(
     <div className='textHolder'>
       <div className='text'>
-
     <div>
       <ReactTyped
         strings={[

@@ -15,6 +15,7 @@ import uiux from '../../img/uiandux.png';
 import backend from '../../img/back end.png';
 import designer from '../../img/graphic designer.png';
 import cyberSecurity from '../../img/cyperSecrity.png';
+import Microsoft from '../../img/microsoft.png';
 
 import {v4 as uuid} from 'uuid'
 
@@ -65,7 +66,7 @@ const homeInfo = [
         name: "facebock",
         link: "",
         title: "Sosial Media",
-        active:true,
+
       },
       {
         id: uuid(),
@@ -131,7 +132,6 @@ const homeInfo = [
         name: "facebock",
         link: "",
         title: "Sosial Media",
-        active: true,
       },
       {
         id: uuid(),
@@ -191,7 +191,6 @@ const homeInfo = [
         name: "facebock",
         link: "",
         title: "Sosial Media",
-        active: true,
       },
       {
         id: uuid(),
@@ -246,7 +245,6 @@ const homeInfo = [
         name: "facebock",
         link: "",
         title: "Sosial Media",
-        active: true,
       },
       {
         id: uuid(),
@@ -274,7 +272,7 @@ const homeInfo = [
   {
     id:"cyberSecurity",
     title:"Cyber Security",
-    detailes:"Welcome to Web Secure, your trusted partner in Cyber Security solutions. In today's digital age, protecting your data and infrastructure is more critical than ever. At Web Secure, we specialize in providing comprehensive Cyber Security services to safeguard your business against evolving cyber threats and ensure peace of mind.",
+    detailes:"Welcome To Web Secure, Protecting Your Data And Infrastructure Is More Critical Than Ever. At Web Secure, We Specialize In Providing Comprehensive Cyber Security Services To Safeguard Your Business Against Evolving Cyber Threats And Ensure Peace Of Mind.",
     img:cyberSecurity,
     color: "#f39c12",
         info:[
@@ -301,7 +299,60 @@ const homeInfo = [
         name: "facebock",
         link: "",
         title: "Sosial Media",
-        active: true,
+      },
+      {
+        id: uuid(),
+        img: Sigma,
+        name: "sigma",
+        link: "",
+        title: "Sosial Media",
+      },
+      {
+        id: uuid(),
+        img: Blink,
+        name: "blink",
+        link: "",
+        title: "Sosial Media",
+      },
+      {
+        id: uuid(),
+        img: Base,
+        name: "base",
+        link: "",
+        title: "Sosial Media",
+      },
+    ]
+  },
+  {
+    id:"microsoft",
+    title:"Microsoft Tools",
+    detailes:"At Web Secure, we specialize in harnessing the full potential of Microsoft tools to streamline your workflows and drive productivity.",
+    img: Microsoft,
+    color: "#8e44ad",
+        info:[
+      { 
+        id:1,
+        title:"Microsoft Office Mastery:",
+        text:"From Word processing to Excel spreadsheets, PowerPoint presentations, and beyond, we excel in leveraging the entire suite of Microsoft Office applications to optimize your business processes.",
+      },
+      { 
+        id:2,
+        title:"Customer-Centric Approach:",
+        text:"Your satisfaction is our priority. We work closely with you to understand your needs and deliver solutions that exceed your expectations.",
+      },
+      { 
+        id:3,
+        title:"Take the first step:",
+        text:"towards unlocking the full potential of Microsoft Solutions. Contact us today to schedule a consultation and discover how we can help you achieve your business objectives.",
+      },
+    ],
+    projects:[
+      {
+        id: uuid(),
+        img: Facebock,
+        name: "facebock",
+        link: "",
+        title: "Sosial Media",
       },
       {
         id: uuid(),
@@ -337,7 +388,6 @@ export default function HomePage () {
     };
   }, []);
 
-
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 995px)');
@@ -353,12 +403,16 @@ export default function HomePage () {
 
   const { type } = useParams();
   const nowPage = homeInfo.find((page) => page.id === type) || homeInfo[0];
-  console.log(type);
   document.documentElement.style.setProperty('--main-color', nowPage.color);
 
   return (
       <div className='landing'>
-        <Header3/>
+        {!isSmallScreen ? (
+          <Header3/>
+        ) : (
+          null
+        )}
+
           <div className='content container'>
           {isSmallScreen ? (
             <MySwiper nowPage={nowPage}/>

@@ -25,9 +25,12 @@ export default function Header2 () {
         Graphic Designer 
       </NavLink>
 
-
       <NavLink to="/home/cyberSecurity" className='headr2Li'>
         Cyber Security
+      </NavLink>
+
+      <NavLink to="/home/microsoft" className='headr2Li'>
+        Microsoft
       </NavLink>
 
       </ul>

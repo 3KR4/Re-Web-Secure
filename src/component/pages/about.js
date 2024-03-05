@@ -116,7 +116,7 @@ return(
       <div class="team">
       <div className="container">
         <div class="mainTitle">
-          <h1 className='alone'>Our Team Mempers</h1>
+          <h1 className='alone'>Our Team Members</h1>
         </div>
         <div class="containerGrid">
           {team}
@@ -238,7 +238,6 @@ return(
       <OurSkills/>
       <SemiFooter/>
       <MainFooter/>
-
   </div>
   )
 }

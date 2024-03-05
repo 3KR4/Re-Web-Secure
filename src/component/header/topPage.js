@@ -5,7 +5,6 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
 
 export default function TopPage (props) {
-console.log(props);
 return(
   <div className="pagesTop">
     <div class="container">
