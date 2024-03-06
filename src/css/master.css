@@ -1938,7 +1938,8 @@ body.dark .services-page .pricing .box::after {
     flex-direction: column;
   }
   .about .section img {
-    width: 55%;
+    width: 500px;
+    height: 463px;
   }
   .about .section .button {
     justify-content: center;
@@ -2147,8 +2148,8 @@ body.dark .services-page .pricing .box::after {
   }
   .about .section img {
     width: 88%;
+    height: fit-content;
   }
-
   .about .mainTitles {
     font-size: 25px;
     text-align: center;
@@ -2210,5 +2211,14 @@ body.dark .services-page .pricing .box::after {
   }
   .swiper-button-next, .swiper-button-prev {
     display: none !important;
+  }
+  .about .team .containerGrid {
+    row-gap: 66px;
+  }
+  .about .team {
+    margin-bottom: 0;
+  }
+  .about .work-steps .container {
+    padding-top: 60px;
   }
 }
